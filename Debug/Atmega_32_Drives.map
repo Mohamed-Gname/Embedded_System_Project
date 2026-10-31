@@ -156,7 +156,7 @@ LOAD e:/embedded_sytem_diploma/imt_tools/imt_sdk/imt_sdk_win_64/winavr/bin/../li
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000     0x27fa
+.text           0x00000000     0x29e8
  *(.vectors)
  .vectors       0x00000000       0x54 e:/embedded_sytem_diploma/imt_tools/imt_sdk/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32.o
                 0x00000000                __vectors
@@ -326,78 +326,103 @@ LOAD e:/embedded_sytem_diploma/imt_tools/imt_sdk/imt_sdk_win_64/winavr/bin/../li
  .text.DIO_InternalPullUpControl
                 0x000016bc       0x28 ./Mcal/DIO/DIO_Program.o
                 0x000016bc                DIO_InternalPullUpControl
+ .text.ADC_Int  0x000016e4       0x3a ./Mcal/ADC/ADC_Program.o
+                0x000016e4                ADC_Int
+ .text.ADC_DeInt
+                0x0000171e        0xe ./Mcal/ADC/ADC_Program.o
+                0x0000171e                ADC_DeInt
+ .text.ADC_Enable
+                0x0000172c       0x1c ./Mcal/ADC/ADC_Program.o
+                0x0000172c                ADC_Enable
+ .text.ADC_Disable
+                0x00001748       0x1c ./Mcal/ADC/ADC_Program.o
+                0x00001748                ADC_Disable
+ .text.ADC_EnableInterrupt
+                0x00001764       0x1c ./Mcal/ADC/ADC_Program.o
+                0x00001764                ADC_EnableInterrupt
+ .text.ADC_DisableInterrupt
+                0x00001780       0x1c ./Mcal/ADC/ADC_Program.o
+                0x00001780                ADC_DisableInterrupt
+ .text.ADC_Read
+                0x0000179c       0xfa ./Mcal/ADC/ADC_Program.o
+                0x0000179c                ADC_Read
+ .text.ADC_SelectChannel
+                0x00001896       0x2a ./Mcal/ADC/ADC_Program.o
+ .text.ADC_GetStatus
+                0x000018c0       0x12 ./Mcal/ADC/ADC_Program.o
+                0x000018c0                ADC_GetStatus
  .text.SSD_Init
-                0x000016e4       0x32 ./Hal/Sev_Segment/SevSeg_Program.o
-                0x000016e4                SSD_Init
+                0x000018d2       0x32 ./Hal/Sev_Segment/SevSeg_Program.o
+                0x000018d2                SSD_Init
  .text.SSD_DisplayNo
-                0x00001716       0x58 ./Hal/Sev_Segment/SevSeg_Program.o
-                0x00001716                SSD_DisplayNo
+                0x00001904       0x58 ./Hal/Sev_Segment/SevSeg_Program.o
+                0x00001904                SSD_DisplayNo
  .text.Led_Init
-                0x0000176e       0x22 ./Hal/LED/LED_Program.o
-                0x0000176e                Led_Init
- .text.Led_On   0x00001790       0x54 ./Hal/LED/LED_Program.o
-                0x00001790                Led_On
- .text.Led_Off  0x000017e4       0x40 ./Hal/LED/LED_Program.o
-                0x000017e4                Led_Off
+                0x0000195c       0x22 ./Hal/LED/LED_Program.o
+                0x0000195c                Led_Init
+ .text.Led_On   0x0000197e       0x54 ./Hal/LED/LED_Program.o
+                0x0000197e                Led_On
+ .text.Led_Off  0x000019d2       0x40 ./Hal/LED/LED_Program.o
+                0x000019d2                Led_Off
  .text.Led_Toggle
-                0x00001824       0x20 ./Hal/LED/LED_Program.o
-                0x00001824                Led_Toggle
+                0x00001a12       0x20 ./Hal/LED/LED_Program.o
+                0x00001a12                Led_Toggle
  .text.LCD_Init
-                0x00001844      0x3f4 ./Hal/LCD/LCD_Program.o
-                0x00001844                LCD_Init
+                0x00001a32      0x3f4 ./Hal/LCD/LCD_Program.o
+                0x00001a32                LCD_Init
  .text.LCD_SendCommand
-                0x00001c38      0x13c ./Hal/LCD/LCD_Program.o
-                0x00001c38                LCD_SendCommand
+                0x00001e26      0x13c ./Hal/LCD/LCD_Program.o
+                0x00001e26                LCD_SendCommand
  .text.LCD_WriteCharacter
-                0x00001d74      0x13c ./Hal/LCD/LCD_Program.o
-                0x00001d74                LCD_WriteCharacter
+                0x00001f62      0x13c ./Hal/LCD/LCD_Program.o
+                0x00001f62                LCD_WriteCharacter
  .text.LCD_WriteString
-                0x00001eb0       0x5a ./Hal/LCD/LCD_Program.o
-                0x00001eb0                LCD_WriteString
+                0x0000209e       0x5a ./Hal/LCD/LCD_Program.o
+                0x0000209e                LCD_WriteString
  .text.LCD_MoveTo
-                0x00001f0a       0x56 ./Hal/LCD/LCD_Program.o
-                0x00001f0a                LCD_MoveTo
+                0x000020f8       0x56 ./Hal/LCD/LCD_Program.o
+                0x000020f8                LCD_MoveTo
  .text.LCD_StoreSpecialCharacter
-                0x00001f60       0x7e ./Hal/LCD/LCD_Program.o
-                0x00001f60                LCD_StoreSpecialCharacter
+                0x0000214e       0x7e ./Hal/LCD/LCD_Program.o
+                0x0000214e                LCD_StoreSpecialCharacter
  .text.LCD_WriteNumber
-                0x00001fde      0x130 ./Hal/LCD/LCD_Program.o
-                0x00001fde                LCD_WriteNumber
+                0x000021cc      0x130 ./Hal/LCD/LCD_Program.o
+                0x000021cc                LCD_WriteNumber
  .text.KPD_Init
-                0x0000210e      0x13c ./Hal/KPD/KPD_Program.o
-                0x0000210e                KPD_Init
+                0x000022fc      0x13c ./Hal/KPD/KPD_Program.o
+                0x000022fc                KPD_Init
  .text.KPD_GetKPDValue
-                0x0000224a      0x2f4 ./Hal/KPD/KPD_Program.o
-                0x0000224a                KPD_GetKPDValue
- .text.DC_Init  0x0000253e       0x72 ./Hal/DC_Motor/DC_Motor_Program.o
-                0x0000253e                DC_Init
- .text.DC_On    0x000025b0       0x3e ./Hal/DC_Motor/DC_Motor_Program.o
-                0x000025b0                DC_On
- .text.DC_Off   0x000025ee       0x72 ./Hal/DC_Motor/DC_Motor_Program.o
-                0x000025ee                DC_Off
- .text.DC_OnCW  0x00002660       0x52 ./Hal/DC_Motor/DC_Motor_Program.o
-                0x00002660                DC_OnCW
+                0x00002438      0x2f4 ./Hal/KPD/KPD_Program.o
+                0x00002438                KPD_GetKPDValue
+ .text.DC_Init  0x0000272c       0x72 ./Hal/DC_Motor/DC_Motor_Program.o
+                0x0000272c                DC_Init
+ .text.DC_On    0x0000279e       0x3e ./Hal/DC_Motor/DC_Motor_Program.o
+                0x0000279e                DC_On
+ .text.DC_Off   0x000027dc       0x72 ./Hal/DC_Motor/DC_Motor_Program.o
+                0x000027dc                DC_Off
+ .text.DC_OnCW  0x0000284e       0x52 ./Hal/DC_Motor/DC_Motor_Program.o
+                0x0000284e                DC_OnCW
  .text.DC_OnCCW
-                0x000026b2       0x52 ./Hal/DC_Motor/DC_Motor_Program.o
-                0x000026b2                DC_OnCCW
- .text.main     0x00002704        0xa ./main.o
-                0x00002704                main
- .text.libgcc   0x0000270e       0x36 e:/embedded_sytem_diploma/imt_tools/imt_sdk/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_divmodsi4.o)
-                0x0000270e                __divmodsi4
- .text.libgcc   0x00002744        0x0 e:/embedded_sytem_diploma/imt_tools/imt_sdk/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
- .text.libgcc   0x00002744        0x0 e:/embedded_sytem_diploma/imt_tools/imt_sdk/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_copy_data.o)
- .text.libgcc   0x00002744        0x0 e:/embedded_sytem_diploma/imt_tools/imt_sdk/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_clear_bss.o)
- .text.libgcc   0x00002744       0x44 e:/embedded_sytem_diploma/imt_tools/imt_sdk/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_udivmodsi4.o)
-                0x00002744                __udivmodsi4
- .text.libgcc   0x00002788       0x38 e:/embedded_sytem_diploma/imt_tools/imt_sdk/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_prologue.o)
-                0x00002788                __prologue_saves__
- .text.libgcc   0x000027c0       0x36 e:/embedded_sytem_diploma/imt_tools/imt_sdk/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_epilogue.o)
-                0x000027c0                __epilogue_restores__
-                0x000027f6                . = ALIGN (0x2)
+                0x000028a0       0x52 ./Hal/DC_Motor/DC_Motor_Program.o
+                0x000028a0                DC_OnCCW
+ .text.main     0x000028f2        0xa ./main.o
+                0x000028f2                main
+ .text.libgcc   0x000028fc       0x36 e:/embedded_sytem_diploma/imt_tools/imt_sdk/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_divmodsi4.o)
+                0x000028fc                __divmodsi4
+ .text.libgcc   0x00002932        0x0 e:/embedded_sytem_diploma/imt_tools/imt_sdk/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
+ .text.libgcc   0x00002932        0x0 e:/embedded_sytem_diploma/imt_tools/imt_sdk/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_copy_data.o)
+ .text.libgcc   0x00002932        0x0 e:/embedded_sytem_diploma/imt_tools/imt_sdk/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_clear_bss.o)
+ .text.libgcc   0x00002932       0x44 e:/embedded_sytem_diploma/imt_tools/imt_sdk/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_udivmodsi4.o)
+                0x00002932                __udivmodsi4
+ .text.libgcc   0x00002976       0x38 e:/embedded_sytem_diploma/imt_tools/imt_sdk/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_prologue.o)
+                0x00002976                __prologue_saves__
+ .text.libgcc   0x000029ae       0x36 e:/embedded_sytem_diploma/imt_tools/imt_sdk/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_epilogue.o)
+                0x000029ae                __epilogue_restores__
+                0x000029e4                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x000027f6        0x0 e:/embedded_sytem_diploma/imt_tools/imt_sdk/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
-                0x000027f6                exit
-                0x000027f6                _exit
+ .fini9         0x000029e4        0x0 e:/embedded_sytem_diploma/imt_tools/imt_sdk/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
+                0x000029e4                exit
+                0x000029e4                _exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -416,11 +441,11 @@ LOAD e:/embedded_sytem_diploma/imt_tools/imt_sdk/imt_sdk_win_64/winavr/bin/../li
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x000027f6        0x4 e:/embedded_sytem_diploma/imt_tools/imt_sdk/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
+ .fini0         0x000029e4        0x4 e:/embedded_sytem_diploma/imt_tools/imt_sdk/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
  *(.fini0)
-                0x000027fa                _etext = .
+                0x000029e8                _etext = .
 
-.data           0x00800060       0x22 load address 0x000027fa
+.data           0x00800060       0x22 load address 0x000029e8
                 0x00800060                PROVIDE (__data_start, .)
  *(.data)
  .data          0x00800060        0x0 e:/embedded_sytem_diploma/imt_tools/imt_sdk/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32.o
@@ -466,7 +491,7 @@ LOAD e:/embedded_sytem_diploma/imt_tools/imt_sdk/imt_sdk_win_64/winavr/bin/../li
                 0x00800082                _edata = .
                 0x00800082                PROVIDE (__data_end, .)
 
-.bss            0x00800082        0x6
+.bss            0x00800082        0x7
                 0x00800082                PROVIDE (__bss_start, .)
  *(.bss)
  .bss           0x00800082        0x0 e:/embedded_sytem_diploma/imt_tools/imt_sdk/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32.o
@@ -503,17 +528,19 @@ LOAD e:/embedded_sytem_diploma/imt_tools/imt_sdk/imt_sdk_win_64/winavr/bin/../li
  .bss.GINT0     0x00800082        0x2 ./Mcal/EXTI/EXTI_Program.o
  .bss.GINT1     0x00800084        0x2 ./Mcal/EXTI/EXTI_Program.o
  .bss.GINT2     0x00800086        0x2 ./Mcal/EXTI/EXTI_Program.o
+ .bss.Adc_State
+                0x00800088        0x1 ./Mcal/ADC/ADC_Program.o
  *(COMMON)
-                0x00800088                PROVIDE (__bss_end, .)
-                0x000027fa                __data_load_start = LOADADDR (.data)
-                0x0000281c                __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x00800089                PROVIDE (__bss_end, .)
+                0x000029e8                __data_load_start = LOADADDR (.data)
+                0x00002a0a                __data_load_end = (__data_load_start + SIZEOF (.data))
 
-.noinit         0x00800088        0x0
-                0x00800088                PROVIDE (__noinit_start, .)
+.noinit         0x00800089        0x0
+                0x00800089                PROVIDE (__noinit_start, .)
  *(.noinit*)
-                0x00800088                PROVIDE (__noinit_end, .)
-                0x00800088                _end = .
-                0x00800088                PROVIDE (__heap_start, .)
+                0x00800089                PROVIDE (__noinit_end, .)
+                0x00800089                _end = .
+                0x00800089                PROVIDE (__heap_start, .)
 
 .eeprom         0x00810000        0x0
  *(.eeprom*)
@@ -531,33 +558,33 @@ LOAD e:/embedded_sytem_diploma/imt_tools/imt_sdk/imt_sdk_win_64/winavr/bin/../li
 .signature
  *(.signature*)
 
-.stab           0x00000000     0x29f4
+.stab           0x00000000     0x2ea4
  *(.stab)
  .stab          0x00000000      0x2dc ./Mcal/GIE/GIE_Program.o
  .stab          0x000002dc      0x450 ./Mcal/EXTI/EXTI_Program.o
                                 0x5b8 (size before relaxing)
  .stab          0x0000072c      0x684 ./Mcal/DIO/DIO_Program.o
                                 0x7ec (size before relaxing)
- .stab          0x00000db0       0xd8 ./Mcal/ADC/ADC_Program.o
-                                 0xe4 (size before relaxing)
- .stab          0x00000e88      0x2b8 ./Hal/Sev_Segment/SevSeg_Program.o
+ .stab          0x00000db0      0x588 ./Mcal/ADC/ADC_Program.o
+                                0x6f0 (size before relaxing)
+ .stab          0x00001338      0x2b8 ./Hal/Sev_Segment/SevSeg_Program.o
                                 0x420 (size before relaxing)
- .stab          0x00001140      0x324 ./Hal/LED/LED_Program.o
+ .stab          0x000015f0      0x324 ./Hal/LED/LED_Program.o
                                 0x48c (size before relaxing)
- .stab          0x00001464      0xa80 ./Hal/LCD/LCD_Program.o
+ .stab          0x00001914      0xa80 ./Hal/LCD/LCD_Program.o
                                 0xbe8 (size before relaxing)
- .stab          0x00001ee4      0x57c ./Hal/KPD/KPD_Program.o
+ .stab          0x00002394      0x57c ./Hal/KPD/KPD_Program.o
                                 0x714 (size before relaxing)
- .stab          0x00002460      0x3cc ./Hal/DC_Motor/DC_Motor_Program.o
+ .stab          0x00002910      0x3cc ./Hal/DC_Motor/DC_Motor_Program.o
                                 0x534 (size before relaxing)
- .stab          0x0000282c       0xd8 ./App/App.o
+ .stab          0x00002cdc       0xd8 ./App/App.o
                                  0xe4 (size before relaxing)
- .stab          0x00002904       0xf0 ./main.o
+ .stab          0x00002db4       0xf0 ./main.o
                                  0xfc (size before relaxing)
 
-.stabstr        0x00000000     0x1b3c
+.stabstr        0x00000000     0x230a
  *(.stabstr)
- .stabstr       0x00000000     0x1b3c ./Mcal/GIE/GIE_Program.o
+ .stabstr       0x00000000     0x230a ./Mcal/GIE/GIE_Program.o
 
 .stab.excl
  *(.stab.excl)

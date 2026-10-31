@@ -10,6 +10,11 @@
 
 #include <stdint.h>
 
+#define _SetAddress8bit(Addrress)   *((volatile uint8_t*)Addrress)
+#define _SetAddress16bit(Addrress)  *((volatile uint16_t*)Addrress)
+#define _SetAddress32bit(Addrress)  *((volatile uint32_t*)Addrress)
+
+
 
 /*=================================================*/
 //Defintion of PORT A REGISTER:
@@ -56,6 +61,7 @@
 #define ADCSRA_Reg    *((volatile uint8_t*)0x26)
 #define ADCH_Reg      *((volatile uint8_t*)0x25)
 #define ADCL_Reg      *((volatile uint8_t*)0x24)
+#define ADCData_Reg  _SetAddress16bit(0x24)
 #define SFIOR_Reg     *((volatile uint8_t*)0x50)
 
 #endif /* MCAL_ATMEGA_32_REGISTER_H_ */

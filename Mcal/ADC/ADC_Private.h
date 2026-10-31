@@ -72,11 +72,9 @@ typedef enum
 
 typedef enum
 {
-	Disable=0x00,
-	Enable =0x80,
+	Adc_Disable=0x00,
+	Adc_Enable=0x80,
 }ADC_State_t;
-
-
 
 typedef enum
 {
@@ -92,19 +90,40 @@ typedef enum
 
 typedef enum
 {
-	ADC_Channel0,
-	ADC_Channel1,
-	ADC_Channel2,
-	ADC_Channel3,
-	ADC_Channel4,
-	ADC_Channel5,
-	ADC_Channel6,
-	ADC_Channel7,
-}ADC_SelectChannelSingleEnded_t;
+	ADC_SingleEndedChannel0,
+	ADC_SingleEndedChannel1,
+	ADC_SingleEndedChannel2,
+	ADC_SingleEndedChannel3,
+	ADC_SingleEndedChannel4,
+	ADC_SingleEndedChannel5,
+	ADC_SingleEndedChannel6,
+	ADC_SingleEndedChannel7,
+}ADC_Channel_t;
 
 typedef enum
 {
-
+  x,
 }ADC_SelectChanelDifferential_t;
 
+typedef enum
+{
+	ADC_TriggerMask = 0xE0,
+	ADC_ChannelMask = 0x1F,
+}ADC_MaskinValue_t;
+
+typedef enum
+{
+	ADC_Uninitialized,
+	ADC_Idel,
+	ADC_Busy,
+}ADC_DriverState;
+
+typedef enum
+{
+	Adc_Ok,
+	Adc_NullPointerErr,
+	ADC_InvalidChannelErr,
+	ADC_TimeOutErr,
+	ADC_NotInitializedErr,
+}ADC_ErrorState;
 #endif /* MCAL_ADC_ADC_PRIVATE_H_ */
