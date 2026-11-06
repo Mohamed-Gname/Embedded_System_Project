@@ -30,5 +30,9 @@ Mcal/ADC \
 Mcal/DIO \
 Mcal/EXTI \
 Mcal/GIE \
+Mcal/Timer0 \
+Mcal/Timer1 \
+Mcal/Timer2 \
+Mcal/USART \
 . \
 

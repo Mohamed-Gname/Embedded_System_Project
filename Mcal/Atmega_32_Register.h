@@ -64,4 +64,44 @@
 #define ADCData_Reg  _SetAddress16bit(0x24)
 #define SFIOR_Reg     *((volatile uint8_t*)0x50)
 
+/*============================================
+ * Timer 0 Registers
+ * =========================================*/
+
+#define TCCR0_Reg     *((volatile uint8_t*)0x53)
+#define TCNT0_Reg     *((volatile uint8_t*)0x52)
+#define OCR0_Reg     *((volatile uint8_t*)0x5C)
+
+/*==============================================
+ *   Timer 2 Register
+ ================================================*/
+
+#define TCCR2_Reg     *((volatile uint8_t*)0x45)
+#define TCNT2_Reg     *((volatile uint8_t*)0x44)
+#define OCR2_Reg     *((volatile uint8_t*)0x43)
+
+/*====================================
+ * Timer 1 Register
+ ======================================*/
+
+#define TCCR1A_Reg     *((volatile uint8_t*)0x4F)
+#define TCCR1B_Reg     *((volatile uint8_t*)0x4E)
+#define TCNT1_Reg     *((volatile uint8_t*)0x4C)
+#define OCR1A_Reg     *((volatile uint8_t*)0x4A)
+#define OCR1B_Reg     *((volatile uint8_t*)0x48)
+#define ICR1_Reg     *((volatile uint8_t*)0x46)
+
+/*=======================================
+ *
+ =========================================*/
+
+
+#define TIMSk_Reg    *((volatile uint8_t*)0x59)
+#define TIFR_Reg     *((volatile uint8_t*)0x58)
+
+
+
+
+
+
 #endif /* MCAL_ATMEGA_32_REGISTER_H_ */
