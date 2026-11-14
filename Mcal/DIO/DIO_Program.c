@@ -144,16 +144,15 @@ void DIO_ToggleForGroup(uint8_t GroupName  )
  /*Internal Pull Up */
 void DIO_InternalPullUpControl(uint8_t GroupName ,uint8_t PinNo,uint8_t PullUpState)
 {
-	/*
-	 * if (Pullstate==Enable)
-	 * {
-	 * 		DIO_WriteForPin(GroupName,PinNo,DIO_Low);
-	 * }elseif(PullState==DisEnable)
-	 * {
-	 * 		DIO_WriteForPin(GroupName,PinNo,DIO_High;
-	 * }
-	 * */
-    DIO_WriteForPin(GroupName,PinNo,PullUpState);
-    //PullUpState i will receive it Enable or DisEnable by this line
+
+	if (PullUpState == Enable)
+	{
+	    DIO_WriteForPin(GroupName, PinNo, DIO_High);
+	}
+	else if (PullUpState == Disable)
+	{
+	    DIO_WriteForPin(GroupName, PinNo, DIO_Low);
+	}
+
 }
 

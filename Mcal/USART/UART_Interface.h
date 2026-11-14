@@ -20,18 +20,27 @@
  * ASyncronization
  * Frame Config (Parity , Data Size , StopBit)
  */
-void UART_Int();
 
-/*poling*/
+#include <stdint.h>
+
+/* Initialization */
+void UART_Init(void);
+
+/* Transmit & Receive */
+void UART_SendByte(uint8_t Data);
+uint8_t UART_ReceiveByte(void);
+
+/* Raw Data */
 void UART_TX_RawData(uint16_t Data);
-uint16_t RX_RawData();
+uint16_t UART_RX_RawData(void);
 
-/*Controls*/
-void UART_EnableRX();
-void UARRT_EnableTX();
-void UART_DisableRX();
-void UART_DisableTX();
+/* Controls */
+void UART_EnableRX(void);
+void UART_EnableTX(void);
+void UART_DisableRX(void);
+void UART_DisableTX(void);
 
-
+/* Status */
+uint8_t UART_GetStatus(void);
 
 #endif /* MCAL_USART_UART_INTERFACE_H_ */

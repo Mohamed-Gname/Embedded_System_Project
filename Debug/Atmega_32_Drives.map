@@ -61,12 +61,16 @@ LOAD ./Mcal/GIE/GIE_Program.o
 LOAD ./Mcal/EXTI/EXTI_Program.o
 LOAD ./Mcal/DIO/DIO_Program.o
 LOAD ./Mcal/ADC/ADC_Program.o
+LOAD ./Hal/UltraSonic/UltraSonic_Program.o
 LOAD ./Hal/Sev_Segment/SevSeg_Program.o
 LOAD ./Hal/LED/LED_Program.o
 LOAD ./Hal/LCD/LCD_Program.o
 LOAD ./Hal/KPD/KPD_Program.o
 LOAD ./Hal/DC_Motor/DC_Motor_Program.o
+LOAD ./Hal/BUTTON/Btn_Program.o
+LOAD ./App/APP_7SEG.o
 LOAD ./App/App.o
+LOAD ./App/App_1.o
 LOAD ./main.o
 LOAD e:/embedded_sytem_diploma/imt_tools/imt_sdk/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
 LOAD e:/embedded_sytem_diploma/imt_tools/imt_sdk/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a
@@ -162,7 +166,7 @@ LOAD e:/embedded_sytem_diploma/imt_tools/imt_sdk/imt_sdk_win_64/winavr/bin/../li
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000     0x2bdc
+.text           0x00000000     0x3028
  *(.vectors)
  .vectors       0x00000000       0x54 e:/embedded_sytem_diploma/imt_tools/imt_sdk/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32.o
                 0x00000000                __vectors
@@ -243,12 +247,16 @@ LOAD e:/embedded_sytem_diploma/imt_tools/imt_sdk/imt_sdk_win_64/winavr/bin/../li
  .text          0x00000092        0x0 ./Mcal/EXTI/EXTI_Program.o
  .text          0x00000092        0x0 ./Mcal/DIO/DIO_Program.o
  .text          0x00000092        0x0 ./Mcal/ADC/ADC_Program.o
+ .text          0x00000092        0x0 ./Hal/UltraSonic/UltraSonic_Program.o
  .text          0x00000092        0x0 ./Hal/Sev_Segment/SevSeg_Program.o
  .text          0x00000092        0x0 ./Hal/LED/LED_Program.o
  .text          0x00000092        0x0 ./Hal/LCD/LCD_Program.o
  .text          0x00000092        0x0 ./Hal/KPD/KPD_Program.o
  .text          0x00000092        0x0 ./Hal/DC_Motor/DC_Motor_Program.o
+ .text          0x00000092        0x0 ./Hal/BUTTON/Btn_Program.o
+ .text          0x00000092        0x0 ./App/APP_7SEG.o
  .text          0x00000092        0x0 ./App/App.o
+ .text          0x00000092        0x0 ./App/App_1.o
  .text          0x00000092        0x0 ./main.o
  .text          0x00000092        0x0 e:/embedded_sytem_diploma/imt_tools/imt_sdk/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_udivmodhi4.o)
  .text          0x00000092        0x0 e:/embedded_sytem_diploma/imt_tools/imt_sdk/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_divmodsi4.o)
@@ -282,186 +290,213 @@ LOAD e:/embedded_sytem_diploma/imt_tools/imt_sdk/imt_sdk_win_64/winavr/bin/../li
                 0x00000a94                __fpcmp_parts_f
                 0x00000b46                . = ALIGN (0x2)
  *(.text.*)
+ .text.UART_Int
+                0x00000b46        0xe ./Mcal/USART/UART_Program.o
+                0x00000b46                UART_Int
+ .text.UART_TX_RawData
+                0x00000b54       0x60 ./Mcal/USART/UART_Program.o
+                0x00000b54                UART_TX_RawData
+ .text.RX_RawData
+                0x00000bb4       0x58 ./Mcal/USART/UART_Program.o
+                0x00000bb4                RX_RawData
+ .text.UART_EnableRX
+                0x00000c0c       0x1c ./Mcal/USART/UART_Program.o
+                0x00000c0c                UART_EnableRX
+ .text.UARRT_EnableTX
+                0x00000c28       0x1c ./Mcal/USART/UART_Program.o
+                0x00000c28                UARRT_EnableTX
+ .text.UART_DisableRX
+                0x00000c44       0x1c ./Mcal/USART/UART_Program.o
+                0x00000c44                UART_DisableRX
+ .text.UART_DisableTX
+                0x00000c60       0x1c ./Mcal/USART/UART_Program.o
+                0x00000c60                UART_DisableTX
  .text.T0_NormalInit
-                0x00000b46       0x2c ./Mcal/Timer0/T0_Program.o
-                0x00000b46                T0_NormalInit
+                0x00000c7c       0x2c ./Mcal/Timer0/T0_Program.o
+                0x00000c7c                T0_NormalInit
  .text.T0_SetPreLoad
-                0x00000b72       0x2a ./Mcal/Timer0/T0_Program.o
-                0x00000b72                T0_SetPreLoad
+                0x00000ca8       0x2a ./Mcal/Timer0/T0_Program.o
+                0x00000ca8                T0_SetPreLoad
  .text.T0_NormalCallBack
-                0x00000b9c       0x2c ./Mcal/Timer0/T0_Program.o
-                0x00000b9c                T0_NormalCallBack
+                0x00000cd2       0x2c ./Mcal/Timer0/T0_Program.o
+                0x00000cd2                T0_NormalCallBack
  .text.__vector_11
-                0x00000bc8       0xc4 ./Mcal/Timer0/T0_Program.o
-                0x00000bc8                __vector_11
+                0x00000cfe       0xc4 ./Mcal/Timer0/T0_Program.o
+                0x00000cfe                __vector_11
  .text.T0_CTCInit
-                0x00000c8c        0xe ./Mcal/Timer0/T0_Program.o
-                0x00000c8c                T0_CTCInit
+                0x00000dc2        0xe ./Mcal/Timer0/T0_Program.o
+                0x00000dc2                T0_CTCInit
  .text.T0_SetCompareValue
-                0x00000c9a       0x14 ./Mcal/Timer0/T0_Program.o
-                0x00000c9a                T0_SetCompareValue
+                0x00000dd0       0x14 ./Mcal/Timer0/T0_Program.o
+                0x00000dd0                T0_SetCompareValue
  .text.T0_CTCCallBack
-                0x00000cae       0x18 ./Mcal/Timer0/T0_Program.o
-                0x00000cae                T0_CTCCallBack
+                0x00000de4       0x18 ./Mcal/Timer0/T0_Program.o
+                0x00000de4                T0_CTCCallBack
  .text.T0_PwmInit
-                0x00000cc6       0x16 ./Mcal/Timer0/T0_Program.o
-                0x00000cc6                T0_PwmInit
+                0x00000dfc       0x16 ./Mcal/Timer0/T0_Program.o
+                0x00000dfc                T0_PwmInit
  .text.T0_SetDutyCycle
-                0x00000cdc       0x36 ./Mcal/Timer0/T0_Program.o
-                0x00000cdc                T0_SetDutyCycle
+                0x00000e12       0x36 ./Mcal/Timer0/T0_Program.o
+                0x00000e12                T0_SetDutyCycle
  .text.GIE_Enable
-                0x00000d12       0x1c ./Mcal/GIE/GIE_Program.o
-                0x00000d12                GIE_Enable
+                0x00000e48       0x1c ./Mcal/GIE/GIE_Program.o
+                0x00000e48                GIE_Enable
  .text.GIE_Disable
-                0x00000d2e       0x1c ./Mcal/GIE/GIE_Program.o
-                0x00000d2e                GIE_Disable
+                0x00000e64       0x1c ./Mcal/GIE/GIE_Program.o
+                0x00000e64                GIE_Disable
  .text.EXTI_Init
-                0x00000d4a       0x8c ./Mcal/EXTI/EXTI_Program.o
-                0x00000d4a                EXTI_Init
+                0x00000e80       0x8c ./Mcal/EXTI/EXTI_Program.o
+                0x00000e80                EXTI_Init
  .text.EXTI_Enable
-                0x00000dd6       0x54 ./Mcal/EXTI/EXTI_Program.o
-                0x00000dd6                EXTI_Enable
+                0x00000f0c       0x54 ./Mcal/EXTI/EXTI_Program.o
+                0x00000f0c                EXTI_Enable
  .text.EXTI_Disable
-                0x00000e2a       0x54 ./Mcal/EXTI/EXTI_Program.o
-                0x00000e2a                EXTI_Disable
+                0x00000f60       0x54 ./Mcal/EXTI/EXTI_Program.o
+                0x00000f60                EXTI_Disable
  .text.EXTI_CallBackFunction
-                0x00000e7e       0x60 ./Mcal/EXTI/EXTI_Program.o
-                0x00000e7e                EXTI_CallBackFunction
+                0x00000fb4       0x60 ./Mcal/EXTI/EXTI_Program.o
+                0x00000fb4                EXTI_CallBackFunction
  .text.__vector_1
-                0x00000ede       0x66 ./Mcal/EXTI/EXTI_Program.o
-                0x00000ede                __vector_1
+                0x00001014       0x66 ./Mcal/EXTI/EXTI_Program.o
+                0x00001014                __vector_1
  .text.__vector_2
-                0x00000f44       0x66 ./Mcal/EXTI/EXTI_Program.o
-                0x00000f44                __vector_2
+                0x0000107a       0x66 ./Mcal/EXTI/EXTI_Program.o
+                0x0000107a                __vector_2
  .text.__vector_3
-                0x00000faa       0x66 ./Mcal/EXTI/EXTI_Program.o
-                0x00000faa                __vector_3
+                0x000010e0       0x66 ./Mcal/EXTI/EXTI_Program.o
+                0x000010e0                __vector_3
  .text.DIO_DirectionSelectForPin
-                0x00001010      0x20c ./Mcal/DIO/DIO_Program.o
-                0x00001010                DIO_DirectionSelectForPin
+                0x00001146      0x20c ./Mcal/DIO/DIO_Program.o
+                0x00001146                DIO_DirectionSelectForPin
  .text.DIO_DirectionSelectForGroup
-                0x0000121c       0x84 ./Mcal/DIO/DIO_Program.o
-                0x0000121c                DIO_DirectionSelectForGroup
+                0x00001352       0x84 ./Mcal/DIO/DIO_Program.o
+                0x00001352                DIO_DirectionSelectForGroup
  .text.DIO_WriteForGroup
-                0x000012a0       0x84 ./Mcal/DIO/DIO_Program.o
-                0x000012a0                DIO_WriteForGroup
+                0x000013d6       0x84 ./Mcal/DIO/DIO_Program.o
+                0x000013d6                DIO_WriteForGroup
  .text.DIO_WriteForPin
-                0x00001324      0x20c ./Mcal/DIO/DIO_Program.o
-                0x00001324                DIO_WriteForPin
+                0x0000145a      0x20c ./Mcal/DIO/DIO_Program.o
+                0x0000145a                DIO_WriteForPin
  .text.DIO_ReadInputForPin
-                0x00001530      0x11a ./Mcal/DIO/DIO_Program.o
-                0x00001530                DIO_ReadInputForPin
+                0x00001666      0x11a ./Mcal/DIO/DIO_Program.o
+                0x00001666                DIO_ReadInputForPin
  .text.DIO_ReadInputForGroup
-                0x0000164a       0xa2 ./Mcal/DIO/DIO_Program.o
-                0x0000164a                DIO_ReadInputForGroup
+                0x00001780       0xa2 ./Mcal/DIO/DIO_Program.o
+                0x00001780                DIO_ReadInputForGroup
  .text.DIO_ToggleForPin
-                0x000016ec      0x104 ./Mcal/DIO/DIO_Program.o
-                0x000016ec                DIO_ToggleForPin
+                0x00001822      0x104 ./Mcal/DIO/DIO_Program.o
+                0x00001822                DIO_ToggleForPin
  .text.DIO_ToggleForGroup
-                0x000017f0       0x98 ./Mcal/DIO/DIO_Program.o
-                0x000017f0                DIO_ToggleForGroup
+                0x00001926       0x98 ./Mcal/DIO/DIO_Program.o
+                0x00001926                DIO_ToggleForGroup
  .text.DIO_InternalPullUpControl
-                0x00001888       0x28 ./Mcal/DIO/DIO_Program.o
-                0x00001888                DIO_InternalPullUpControl
- .text.ADC_Int  0x000018b0       0x3a ./Mcal/ADC/ADC_Program.o
-                0x000018b0                ADC_Int
+                0x000019be       0x40 ./Mcal/DIO/DIO_Program.o
+                0x000019be                DIO_InternalPullUpControl
+ .text.ADC_Int  0x000019fe       0x3a ./Mcal/ADC/ADC_Program.o
+                0x000019fe                ADC_Int
  .text.ADC_DeInt
-                0x000018ea        0xe ./Mcal/ADC/ADC_Program.o
-                0x000018ea                ADC_DeInt
+                0x00001a38        0xe ./Mcal/ADC/ADC_Program.o
+                0x00001a38                ADC_DeInt
  .text.ADC_Enable
-                0x000018f8       0x1c ./Mcal/ADC/ADC_Program.o
-                0x000018f8                ADC_Enable
+                0x00001a46       0x1c ./Mcal/ADC/ADC_Program.o
+                0x00001a46                ADC_Enable
  .text.ADC_Disable
-                0x00001914       0x1c ./Mcal/ADC/ADC_Program.o
-                0x00001914                ADC_Disable
+                0x00001a62       0x1c ./Mcal/ADC/ADC_Program.o
+                0x00001a62                ADC_Disable
  .text.ADC_EnableInterrupt
-                0x00001930       0x1c ./Mcal/ADC/ADC_Program.o
-                0x00001930                ADC_EnableInterrupt
+                0x00001a7e       0x1c ./Mcal/ADC/ADC_Program.o
+                0x00001a7e                ADC_EnableInterrupt
  .text.ADC_DisableInterrupt
-                0x0000194c       0x1c ./Mcal/ADC/ADC_Program.o
-                0x0000194c                ADC_DisableInterrupt
+                0x00001a9a       0x1c ./Mcal/ADC/ADC_Program.o
+                0x00001a9a                ADC_DisableInterrupt
  .text.ADC_Read
-                0x00001968       0xfa ./Mcal/ADC/ADC_Program.o
-                0x00001968                ADC_Read
+                0x00001ab6       0xfa ./Mcal/ADC/ADC_Program.o
+                0x00001ab6                ADC_Read
  .text.ADC_SelectChannel
-                0x00001a62       0x2a ./Mcal/ADC/ADC_Program.o
+                0x00001bb0       0x2a ./Mcal/ADC/ADC_Program.o
  .text.ADC_GetStatus
-                0x00001a8c       0x12 ./Mcal/ADC/ADC_Program.o
-                0x00001a8c                ADC_GetStatus
+                0x00001bda       0x12 ./Mcal/ADC/ADC_Program.o
+                0x00001bda                ADC_GetStatus
+ .text.Ultrasonic_Init
+                0x00001bec        0xe ./Hal/UltraSonic/UltraSonic_Program.o
+                0x00001bec                Ultrasonic_Init
+ .text.UltraSonic_Trigger
+                0x00001bfa        0xe ./Hal/UltraSonic/UltraSonic_Program.o
+                0x00001bfa                UltraSonic_Trigger
  .text.SSD_Init
-                0x00001a9e       0x32 ./Hal/Sev_Segment/SevSeg_Program.o
-                0x00001a9e                SSD_Init
+                0x00001c08       0x32 ./Hal/Sev_Segment/SevSeg_Program.o
+                0x00001c08                SSD_Init
  .text.SSD_DisplayNo
-                0x00001ad0       0x58 ./Hal/Sev_Segment/SevSeg_Program.o
-                0x00001ad0                SSD_DisplayNo
+                0x00001c3a       0x58 ./Hal/Sev_Segment/SevSeg_Program.o
+                0x00001c3a                SSD_DisplayNo
  .text.Led_Init
-                0x00001b28       0x22 ./Hal/LED/LED_Program.o
-                0x00001b28                Led_Init
- .text.Led_On   0x00001b4a       0x54 ./Hal/LED/LED_Program.o
-                0x00001b4a                Led_On
- .text.Led_Off  0x00001b9e       0x40 ./Hal/LED/LED_Program.o
-                0x00001b9e                Led_Off
+                0x00001c92       0x22 ./Hal/LED/LED_Program.o
+                0x00001c92                Led_Init
+ .text.Led_On   0x00001cb4       0x54 ./Hal/LED/LED_Program.o
+                0x00001cb4                Led_On
+ .text.Led_Off  0x00001d08       0x40 ./Hal/LED/LED_Program.o
+                0x00001d08                Led_Off
  .text.Led_Toggle
-                0x00001bde       0x20 ./Hal/LED/LED_Program.o
-                0x00001bde                Led_Toggle
+                0x00001d48       0x20 ./Hal/LED/LED_Program.o
+                0x00001d48                Led_Toggle
  .text.LCD_Init
-                0x00001bfe      0x3f4 ./Hal/LCD/LCD_Program.o
-                0x00001bfe                LCD_Init
+                0x00001d68      0x3f4 ./Hal/LCD/LCD_Program.o
+                0x00001d68                LCD_Init
  .text.LCD_SendCommand
-                0x00001ff2      0x13c ./Hal/LCD/LCD_Program.o
-                0x00001ff2                LCD_SendCommand
+                0x0000215c      0x13c ./Hal/LCD/LCD_Program.o
+                0x0000215c                LCD_SendCommand
  .text.LCD_WriteCharacter
-                0x0000212e      0x13c ./Hal/LCD/LCD_Program.o
-                0x0000212e                LCD_WriteCharacter
+                0x00002298      0x13c ./Hal/LCD/LCD_Program.o
+                0x00002298                LCD_WriteCharacter
  .text.LCD_WriteString
-                0x0000226a       0x5a ./Hal/LCD/LCD_Program.o
-                0x0000226a                LCD_WriteString
+                0x000023d4       0x5a ./Hal/LCD/LCD_Program.o
+                0x000023d4                LCD_WriteString
  .text.LCD_MoveTo
-                0x000022c4       0x56 ./Hal/LCD/LCD_Program.o
-                0x000022c4                LCD_MoveTo
+                0x0000242e       0x56 ./Hal/LCD/LCD_Program.o
+                0x0000242e                LCD_MoveTo
  .text.LCD_StoreSpecialCharacter
-                0x0000231a       0x7e ./Hal/LCD/LCD_Program.o
-                0x0000231a                LCD_StoreSpecialCharacter
+                0x00002484       0x7e ./Hal/LCD/LCD_Program.o
+                0x00002484                LCD_StoreSpecialCharacter
  .text.LCD_WriteNumber
-                0x00002398      0x130 ./Hal/LCD/LCD_Program.o
-                0x00002398                LCD_WriteNumber
+                0x00002502      0x130 ./Hal/LCD/LCD_Program.o
+                0x00002502                LCD_WriteNumber
  .text.KPD_Init
-                0x000024c8      0x13c ./Hal/KPD/KPD_Program.o
-                0x000024c8                KPD_Init
+                0x00002632      0x13c ./Hal/KPD/KPD_Program.o
+                0x00002632                KPD_Init
  .text.KPD_GetKPDValue
-                0x00002604      0x2f4 ./Hal/KPD/KPD_Program.o
-                0x00002604                KPD_GetKPDValue
- .text.DC_Init  0x000028f8       0x72 ./Hal/DC_Motor/DC_Motor_Program.o
-                0x000028f8                DC_Init
- .text.DC_On    0x0000296a       0x3e ./Hal/DC_Motor/DC_Motor_Program.o
-                0x0000296a                DC_On
- .text.DC_Off   0x000029a8       0x72 ./Hal/DC_Motor/DC_Motor_Program.o
-                0x000029a8                DC_Off
- .text.DC_OnCW  0x00002a1a       0x52 ./Hal/DC_Motor/DC_Motor_Program.o
-                0x00002a1a                DC_OnCW
+                0x0000276e      0x2f4 ./Hal/KPD/KPD_Program.o
+                0x0000276e                KPD_GetKPDValue
+ .text.DC_Init  0x00002a62       0x72 ./Hal/DC_Motor/DC_Motor_Program.o
+                0x00002a62                DC_Init
+ .text.DC_On    0x00002ad4       0x3e ./Hal/DC_Motor/DC_Motor_Program.o
+                0x00002ad4                DC_On
+ .text.DC_Off   0x00002b12       0x72 ./Hal/DC_Motor/DC_Motor_Program.o
+                0x00002b12                DC_Off
+ .text.DC_OnCW  0x00002b84       0x52 ./Hal/DC_Motor/DC_Motor_Program.o
+                0x00002b84                DC_OnCW
  .text.DC_OnCCW
-                0x00002a6c       0x52 ./Hal/DC_Motor/DC_Motor_Program.o
-                0x00002a6c                DC_OnCCW
- .text.main     0x00002abe        0xa ./main.o
-                0x00002abe                main
- .text.libgcc   0x00002ac8       0x28 e:/embedded_sytem_diploma/imt_tools/imt_sdk/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_udivmodhi4.o)
-                0x00002ac8                __udivmodhi4
- .text.libgcc   0x00002af0       0x36 e:/embedded_sytem_diploma/imt_tools/imt_sdk/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_divmodsi4.o)
-                0x00002af0                __divmodsi4
- .text.libgcc   0x00002b26        0x0 e:/embedded_sytem_diploma/imt_tools/imt_sdk/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
- .text.libgcc   0x00002b26        0x0 e:/embedded_sytem_diploma/imt_tools/imt_sdk/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_copy_data.o)
- .text.libgcc   0x00002b26        0x0 e:/embedded_sytem_diploma/imt_tools/imt_sdk/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_clear_bss.o)
- .text.libgcc   0x00002b26       0x44 e:/embedded_sytem_diploma/imt_tools/imt_sdk/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_udivmodsi4.o)
-                0x00002b26                __udivmodsi4
- .text.libgcc   0x00002b6a       0x38 e:/embedded_sytem_diploma/imt_tools/imt_sdk/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_prologue.o)
-                0x00002b6a                __prologue_saves__
- .text.libgcc   0x00002ba2       0x36 e:/embedded_sytem_diploma/imt_tools/imt_sdk/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_epilogue.o)
-                0x00002ba2                __epilogue_restores__
-                0x00002bd8                . = ALIGN (0x2)
+                0x00002bd6       0x52 ./Hal/DC_Motor/DC_Motor_Program.o
+                0x00002bd6                DC_OnCCW
+ .text.main     0x00002c28      0x2ec ./main.o
+                0x00002c28                main
+ .text.libgcc   0x00002f14       0x28 e:/embedded_sytem_diploma/imt_tools/imt_sdk/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_udivmodhi4.o)
+                0x00002f14                __udivmodhi4
+ .text.libgcc   0x00002f3c       0x36 e:/embedded_sytem_diploma/imt_tools/imt_sdk/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_divmodsi4.o)
+                0x00002f3c                __divmodsi4
+ .text.libgcc   0x00002f72        0x0 e:/embedded_sytem_diploma/imt_tools/imt_sdk/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
+ .text.libgcc   0x00002f72        0x0 e:/embedded_sytem_diploma/imt_tools/imt_sdk/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_copy_data.o)
+ .text.libgcc   0x00002f72        0x0 e:/embedded_sytem_diploma/imt_tools/imt_sdk/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_clear_bss.o)
+ .text.libgcc   0x00002f72       0x44 e:/embedded_sytem_diploma/imt_tools/imt_sdk/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_udivmodsi4.o)
+                0x00002f72                __udivmodsi4
+ .text.libgcc   0x00002fb6       0x38 e:/embedded_sytem_diploma/imt_tools/imt_sdk/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_prologue.o)
+                0x00002fb6                __prologue_saves__
+ .text.libgcc   0x00002fee       0x36 e:/embedded_sytem_diploma/imt_tools/imt_sdk/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_epilogue.o)
+                0x00002fee                __epilogue_restores__
+                0x00003024                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x00002bd8        0x0 e:/embedded_sytem_diploma/imt_tools/imt_sdk/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
-                0x00002bd8                exit
-                0x00002bd8                _exit
+ .fini9         0x00003024        0x0 e:/embedded_sytem_diploma/imt_tools/imt_sdk/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
+                0x00003024                exit
+                0x00003024                _exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -480,11 +515,11 @@ LOAD e:/embedded_sytem_diploma/imt_tools/imt_sdk/imt_sdk_win_64/winavr/bin/../li
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x00002bd8        0x4 e:/embedded_sytem_diploma/imt_tools/imt_sdk/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
+ .fini0         0x00003024        0x4 e:/embedded_sytem_diploma/imt_tools/imt_sdk/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
  *(.fini0)
-                0x00002bdc                _etext = .
+                0x00003028                _etext = .
 
-.data           0x00800060       0x24 load address 0x00002bdc
+.data           0x00800060       0x24 load address 0x00003028
                 0x00800060                PROVIDE (__data_start, .)
  *(.data)
  .data          0x00800060        0x0 e:/embedded_sytem_diploma/imt_tools/imt_sdk/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32.o
@@ -496,12 +531,16 @@ LOAD e:/embedded_sytem_diploma/imt_tools/imt_sdk/imt_sdk_win_64/winavr/bin/../li
  .data          0x00800060        0x0 ./Mcal/EXTI/EXTI_Program.o
  .data          0x00800060        0x0 ./Mcal/DIO/DIO_Program.o
  .data          0x00800060        0x0 ./Mcal/ADC/ADC_Program.o
+ .data          0x00800060        0x0 ./Hal/UltraSonic/UltraSonic_Program.o
  .data          0x00800060        0x0 ./Hal/Sev_Segment/SevSeg_Program.o
  .data          0x00800060        0x0 ./Hal/LED/LED_Program.o
  .data          0x00800060        0x0 ./Hal/LCD/LCD_Program.o
  .data          0x00800060        0x0 ./Hal/KPD/KPD_Program.o
  .data          0x00800060        0x0 ./Hal/DC_Motor/DC_Motor_Program.o
+ .data          0x00800060        0x0 ./Hal/BUTTON/Btn_Program.o
+ .data          0x00800060        0x0 ./App/APP_7SEG.o
  .data          0x00800060        0x0 ./App/App.o
+ .data          0x00800060        0x0 ./App/App_1.o
  .data          0x00800060        0x0 ./main.o
  .data          0x00800060        0x0 e:/embedded_sytem_diploma/imt_tools/imt_sdk/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_udivmodhi4.o)
  .data          0x00800060        0x0 e:/embedded_sytem_diploma/imt_tools/imt_sdk/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_divmodsi4.o)
@@ -549,12 +588,16 @@ LOAD e:/embedded_sytem_diploma/imt_tools/imt_sdk/imt_sdk_win_64/winavr/bin/../li
  .bss           0x00800084        0x0 ./Mcal/EXTI/EXTI_Program.o
  .bss           0x00800084        0x0 ./Mcal/DIO/DIO_Program.o
  .bss           0x00800084        0x0 ./Mcal/ADC/ADC_Program.o
+ .bss           0x00800084        0x0 ./Hal/UltraSonic/UltraSonic_Program.o
  .bss           0x00800084        0x0 ./Hal/Sev_Segment/SevSeg_Program.o
  .bss           0x00800084        0x0 ./Hal/LED/LED_Program.o
  .bss           0x00800084        0x0 ./Hal/LCD/LCD_Program.o
  .bss           0x00800084        0x0 ./Hal/KPD/KPD_Program.o
  .bss           0x00800084        0x0 ./Hal/DC_Motor/DC_Motor_Program.o
+ .bss           0x00800084        0x0 ./Hal/BUTTON/Btn_Program.o
+ .bss           0x00800084        0x0 ./App/APP_7SEG.o
  .bss           0x00800084        0x0 ./App/App.o
+ .bss           0x00800084        0x0 ./App/App_1.o
  .bss           0x00800084        0x0 ./main.o
  .bss           0x00800084        0x0 e:/embedded_sytem_diploma/imt_tools/imt_sdk/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_udivmodhi4.o)
  .bss           0x00800084        0x0 e:/embedded_sytem_diploma/imt_tools/imt_sdk/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_divmodsi4.o)
@@ -586,8 +629,8 @@ LOAD e:/embedded_sytem_diploma/imt_tools/imt_sdk/imt_sdk_win_64/winavr/bin/../li
                 0x00800090        0x1 ./Mcal/ADC/ADC_Program.o
  *(COMMON)
                 0x00800091                PROVIDE (__bss_end, .)
-                0x00002bdc                __data_load_start = LOADADDR (.data)
-                0x00002c00                __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x00003028                __data_load_start = LOADADDR (.data)
+                0x0000304c                __data_load_end = (__data_load_start + SIZEOF (.data))
 
 .noinit         0x00800091        0x0
                 0x00800091                PROVIDE (__noinit_start, .)
@@ -612,41 +655,49 @@ LOAD e:/embedded_sytem_diploma/imt_tools/imt_sdk/imt_sdk_win_64/winavr/bin/../li
 .signature
  *(.signature*)
 
-.stab           0x00000000     0x3558
+.stab           0x00000000     0x3fcc
  *(.stab)
- .stab          0x00000000       0xe4 ./Mcal/USART/UART_Program.o
- .stab          0x000000e4       0xd8 ./Mcal/Timer2/T2_Program.o
+ .stab          0x00000000      0x510 ./Mcal/USART/UART_Program.o
+ .stab          0x00000510       0xd8 ./Mcal/Timer2/T2_Program.o
                                  0xe4 (size before relaxing)
- .stab          0x000001bc       0xd8 ./Mcal/Timer1/T1_Program.o
+ .stab          0x000005e8       0xd8 ./Mcal/Timer1/T1_Program.o
                                  0xe4 (size before relaxing)
- .stab          0x00000294      0x588 ./Mcal/Timer0/T0_Program.o
+ .stab          0x000006c0      0x42c ./Mcal/Timer0/T0_Program.o
                                 0x594 (size before relaxing)
- .stab          0x0000081c      0x174 ./Mcal/GIE/GIE_Program.o
+ .stab          0x00000aec      0x174 ./Mcal/GIE/GIE_Program.o
                                 0x2dc (size before relaxing)
- .stab          0x00000990      0x450 ./Mcal/EXTI/EXTI_Program.o
+ .stab          0x00000c60      0x450 ./Mcal/EXTI/EXTI_Program.o
                                 0x5b8 (size before relaxing)
- .stab          0x00000de0      0x684 ./Mcal/DIO/DIO_Program.o
-                                0x7ec (size before relaxing)
- .stab          0x00001464      0x588 ./Mcal/ADC/ADC_Program.o
+ .stab          0x000010b0      0x6a8 ./Mcal/DIO/DIO_Program.o
+                                0x810 (size before relaxing)
+ .stab          0x00001758      0x588 ./Mcal/ADC/ADC_Program.o
                                 0x6f0 (size before relaxing)
- .stab          0x000019ec      0x2b8 ./Hal/Sev_Segment/SevSeg_Program.o
+ .stab          0x00001ce0      0x1d4 ./Hal/UltraSonic/UltraSonic_Program.o
+                                0x33c (size before relaxing)
+ .stab          0x00001eb4      0x2b8 ./Hal/Sev_Segment/SevSeg_Program.o
                                 0x420 (size before relaxing)
- .stab          0x00001ca4      0x324 ./Hal/LED/LED_Program.o
+ .stab          0x0000216c      0x324 ./Hal/LED/LED_Program.o
                                 0x48c (size before relaxing)
- .stab          0x00001fc8      0xa80 ./Hal/LCD/LCD_Program.o
+ .stab          0x00002490      0xa80 ./Hal/LCD/LCD_Program.o
                                 0xbe8 (size before relaxing)
- .stab          0x00002a48      0x57c ./Hal/KPD/KPD_Program.o
+ .stab          0x00002f10      0x57c ./Hal/KPD/KPD_Program.o
                                 0x714 (size before relaxing)
- .stab          0x00002fc4      0x3cc ./Hal/DC_Motor/DC_Motor_Program.o
+ .stab          0x0000348c      0x3cc ./Hal/DC_Motor/DC_Motor_Program.o
                                 0x534 (size before relaxing)
- .stab          0x00003390       0xd8 ./App/App.o
+ .stab          0x00003858       0xd8 ./Hal/BUTTON/Btn_Program.o
                                  0xe4 (size before relaxing)
- .stab          0x00003468       0xf0 ./main.o
-                                 0xfc (size before relaxing)
+ .stab          0x00003930       0xd8 ./App/APP_7SEG.o
+                                 0xe4 (size before relaxing)
+ .stab          0x00003a08       0xd8 ./App/App.o
+                                 0xe4 (size before relaxing)
+ .stab          0x00003ae0       0xd8 ./App/App_1.o
+                                 0xe4 (size before relaxing)
+ .stab          0x00003bb8      0x414 ./main.o
+                                0x624 (size before relaxing)
 
-.stabstr        0x00000000     0x27e4
+.stabstr        0x00000000     0x2d88
  *(.stabstr)
- .stabstr       0x00000000     0x27e4 ./Mcal/USART/UART_Program.o
+ .stabstr       0x00000000     0x2d88 ./Mcal/USART/UART_Program.o
 
 .stab.excl
  *(.stab.excl)

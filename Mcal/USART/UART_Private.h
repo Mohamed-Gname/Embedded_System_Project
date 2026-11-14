@@ -37,7 +37,6 @@ typedef enum
 	TXEN,
 	RXEN,
 	UDRIE,
-	UDRIE,
 	TXCIE,
 	RXCIE,
 	//UCSRC
@@ -71,8 +70,38 @@ typedef enum
 
 typedef enum
 {
-	Asunch_NormalSpeed,
-	Asunch_DoubleSpeed=0x02,
-}Uart_SpeedMode_t;
+
+	RX_Interrupt_Disable = 0x00,
+	RX_Interrupt_Enable = 0x80,
+	TX_Interrupt_Disable = 0x00,
+	TX_Interrupt_Enable = 0x40,
+
+}Uart_InterruptMode_t;
+
+typedef enum
+{
+    UART_5Bit,
+    UART_6Bit,
+    UART_7Bit,
+    UART_8Bit,
+    UART_9Bit
+
+} UART_CharacterSize_t;
+
+typedef enum
+{
+    UART_Parity_Disable = 0x00,
+    UART_Parity_Even    = 0x20,
+    UART_Parity_Odd     = 0x30
+
+} UART_ParityMode_t;
+
+
+typedef enum
+{
+    UART_OneStopBit = 0x00,
+    UART_TwoStopBit = 0x08
+
+} UART_StopBit_t;
 
 #endif /* MCAL_USART_UART_PRIVATE_H_ */

@@ -16,11 +16,13 @@ RM := rm -rf
 -include Mcal/EXTI/subdir.mk
 -include Mcal/DIO/subdir.mk
 -include Mcal/ADC/subdir.mk
+-include Hal/UltraSonic/subdir.mk
 -include Hal/Sev_Segment/subdir.mk
 -include Hal/LED/subdir.mk
 -include Hal/LCD/subdir.mk
 -include Hal/KPD/subdir.mk
 -include Hal/DC_Motor/subdir.mk
+-include Hal/BUTTON/subdir.mk
 -include App/subdir.mk
 -include subdir.mk
 -include objects.mk
