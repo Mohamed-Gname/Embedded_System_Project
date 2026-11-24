@@ -8,6 +8,7 @@
 #include "LCD_Interface.h"
 #include <util/delay.h>
 
+
 void LCD_Init()
 {
     #if LCD_Mode== Lcd_8BitMode

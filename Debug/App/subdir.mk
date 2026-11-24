@@ -6,17 +6,20 @@
 C_SRCS += \
 ../App/APP_7SEG.c \
 ../App/App.c \
-../App/App_1.c 
+../App/App_1.c \
+../App/LCD_App.c 
 
 OBJS += \
 ./App/APP_7SEG.o \
 ./App/App.o \
-./App/App_1.o 
+./App/App_1.o \
+./App/LCD_App.o 
 
 C_DEPS += \
 ./App/APP_7SEG.d \
 ./App/App.d \
-./App/App_1.d 
+./App/App_1.d \
+./App/LCD_App.d 
 
 
 # Each subdirectory must supply rules for building sources it contributes

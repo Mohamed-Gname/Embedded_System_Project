@@ -1,103 +1,142 @@
+
 /*
  * main.c
  *
- *  Created on: Oct 16, 2026
- *      Author: samsung
+ * Project: LDR-Based Automatic LED Control
+ * Microcontroller: ATmega32
+ *
+ * Hardware Connections:
+ * LDR Output  -> PA0 / ADC0
+ * LED 1       -> PB0
+ * LED 2       -> PB1
+ * LED 3       -> PB2
+ * LED 4       -> PB3
+ * LED 5       -> PB4
+ * LED 6       -> PB5
+ * LED 7       -> PB6
+ * LED 8       -> PB7
  */
 
-#include "Mcal/DIO/DIO_Interface.h"
+/* Include standard integer data types */
+#include <stdint.h>
+
+/* Include ADC Driver functions and definitions */
+#include "Mcal/ADC/ADC_Interface.h"
+
+/* Include LED Driver functions and definitions */
 #include "Hal/LED/LED_Interface.h"
-#include "Hal/LCD/LCD_Interface.h"
-#include "util/delay.h"
 
-//*****************************
+/* Define the number of LEDs connected to PORTB */
+#define LED_COUNT  8
 
-//*****************************
+/* Define ADC thresholds for controlling LEDs */
+#define THRESHOLD_1  200
+#define THRESHOLD_2  400
+#define THRESHOLD_3  600
+#define THRESHOLD_4  800
 
-
-void main(void)
+/* Main program entry point */
+int main(void)
 {
-    uint8_t Counter = 0;
-    uint8_t Button_up;
-    uint8_t Button_down;
+    /* Variable to store the ADC digital reading */
+    uint16_t ADC_Value = 0;
 
-    // Seven Segment Initialization
-    SSD_Init(1);
+    /* Variable to store the ADC function return status */
+    uint8_t ADC_Status = 0;
 
-    // Buttons Initialization
-    DIO_DirectionSelectForPin(DIO_GroupB, DIO_Pin0, DIO_Low);
-    DIO_DirectionSelectForPin(DIO_GroupB, DIO_Pin1, DIO_Low);
+    /* Variable to determine how many LEDs should turn ON */
+    uint8_t LED_Number = 0;
 
-    DIO_InternalPullUpControl(DIO_GroupB, DIO_Pin0, Enable);
-    DIO_InternalPullUpControl(DIO_GroupB, DIO_Pin1, Enable);
+    /* Loop counter used to access LED pins */
+    uint8_t i = 0;
 
-    // Display initial value
-    SSD_DisplayNo(1, Counter);
-
-    while (1)
+    /* Initialize all eight LEDs connected to PORTB */
+    for(i = 0; i < LED_COUNT; i++)
     {
-        // Read UP Button
-        DIO_ReadInputForPin(DIO_GroupB, DIO_Pin0, &Button_up);
+        /* Initialize the current LED pin */
+        Led_Init(DIO_GroupB, i);
+    }
 
-        // Read DOWN Button
-        DIO_ReadInputForPin(DIO_GroupB, DIO_Pin1, &Button_down);
+    /* Initialize the ADC peripheral */
+    ADC_Int();
 
-        // UP Button
-        if (Button_up == DIO_Low)
+    /* Enable the ADC module */
+    ADC_Enable();
+
+    /* Start the continuous application loop */
+    while(1)
+    {
+        /* Read the LDR analog voltage through ADC Channel 0 */
+        ADC_Status = ADC_Read(
+                         ADC_SingleEndedChannel0, /* ADC input channel PA0 */
+                         &ADC_Value,               /* Address to store ADC result */
+                         100000UL                  /* Maximum polling timeout count */
+                     );
+
+        /* Check whether the ADC conversion was successful */
+        if(ADC_Status == Adc_Ok)
         {
-            _delay_ms(20);
-
-            DIO_ReadInputForPin(DIO_GroupB, DIO_Pin0, &Button_up);
-
-            if (Button_up == DIO_Low)
+            /* If ADC reading is below 200, turn OFF all LEDs */
+            if(ADC_Value < THRESHOLD_1)
             {
-                if (Counter == 9)
+                LED_Number = 0;
+            }
+
+            /* If ADC reading is from 200 to 399, turn ON 2 LEDs */
+            else if(ADC_Value < THRESHOLD_2)
+            {
+                LED_Number = 2;
+            }
+
+            /* If ADC reading is from 400 to 599, turn ON 4 LEDs */
+            else if(ADC_Value < THRESHOLD_3)
+            {
+                LED_Number = 4;
+            }
+
+            /* If ADC reading is from 600 to 799, turn ON 6 LEDs */
+            else if(ADC_Value < THRESHOLD_4)
+            {
+                LED_Number = 6;
+            }
+
+            /* If ADC reading is 800 or greater, turn ON all 8 LEDs */
+            else
+            {
+                LED_Number = 8;
+            }
+
+            /* Loop through all eight LEDs to update their states */
+            for(i = 0; i < LED_COUNT; i++)
+            {
+                /* Check whether the current LED is within the required count */
+                if(i < LED_Number)
                 {
-                    Counter = 0;
+                    /* Turn ON the current LED */
+                    Led_On(DIO_GroupB, i, Led_SourceConnection);
                 }
+
+                /* If the LED index is outside the required count */
                 else
                 {
-                    Counter++;
+                    /* Turn OFF the current LED */
+                    Led_Off(DIO_GroupB, i, Led_SourceConnection);
                 }
-
-                SSD_DisplayNo(1, Counter);
-
-                // Wait for button release
-                do
-                {
-                    DIO_ReadInputForPin(DIO_GroupB, DIO_Pin0, &Button_up);
-                }
-                while (Button_up == DIO_Low);
             }
         }
 
-        // DOWN Button
-        if (Button_down == DIO_Low)
+        /* If ADC conversion fails */
+        else
         {
-            _delay_ms(20);
-
-            DIO_ReadInputForPin(DIO_GroupB, DIO_Pin1, &Button_down);
-
-            if (Button_down == DIO_Low)
+            /* Loop through all LEDs */
+            for(i = 0; i < LED_COUNT; i++)
             {
-                if (Counter == 0)
-                {
-                    Counter = 9;
-                }
-                else
-                {
-                    Counter--;
-                }
-
-                SSD_DisplayNo(1, Counter);
-
-                // Wait for button release
-                do
-                {
-                    DIO_ReadInputForPin(DIO_GroupB, DIO_Pin1, &Button_down);
-                }
-                while (Button_down == DIO_Low);
+                /* Turn OFF the current LED as a safe default */
+                Led_Off(DIO_GroupB, i, Led_SourceConnection);
             }
         }
     }
+
+    /* Return zero if the program exits */
+    return 0;
 }

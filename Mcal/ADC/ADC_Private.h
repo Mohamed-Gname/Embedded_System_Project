@@ -67,7 +67,7 @@ typedef enum
 	ADC_DevisionFactor16,
 	ADC_DevisionFactor32,
 	ADC_DevisionFactor64,
-	ADC_DevisionFactor128,
+	ADC_DevisionFactor128,// the pest for Atmega32
 }ADC_PrescalerSelect_t;
 
 typedef enum
@@ -102,8 +102,36 @@ typedef enum
 
 typedef enum
 {
-  x,
-}ADC_SelectChanelDifferential_t;
+    /* Differential Input with Gain 10x */
+    ADC_Diff_ADC0_ADC0_Gain10 = 0x08,
+    ADC_Diff_ADC1_ADC0_Gain10 = 0x09,
+    ADC_Diff_ADC2_ADC2_Gain10 = 0x0C,
+    ADC_Diff_ADC3_ADC2_Gain10 = 0x0D,
+
+    /* Differential Input with Gain 200x */
+    ADC_Diff_ADC0_ADC0_Gain200 = 0x0A,
+    ADC_Diff_ADC1_ADC0_Gain200 = 0x0B,
+    ADC_Diff_ADC2_ADC2_Gain200 = 0x0E,
+    ADC_Diff_ADC3_ADC2_Gain200 = 0x0F,
+
+    /* Differential Input with Gain 1x */
+    ADC_Diff_ADC0_ADC1_Gain1 = 0x10,
+    ADC_Diff_ADC1_ADC1_Gain1 = 0x11,
+    ADC_Diff_ADC2_ADC1_Gain1 = 0x12,
+    ADC_Diff_ADC3_ADC1_Gain1 = 0x13,
+    ADC_Diff_ADC4_ADC1_Gain1 = 0x14,
+    ADC_Diff_ADC5_ADC1_Gain1 = 0x15,
+    ADC_Diff_ADC6_ADC1_Gain1 = 0x16,
+    ADC_Diff_ADC7_ADC1_Gain1 = 0x17,
+
+    ADC_Diff_ADC0_ADC2_Gain1 = 0x18,
+    ADC_Diff_ADC1_ADC2_Gain1 = 0x19,
+    ADC_Diff_ADC2_ADC2_Gain1 = 0x1A,
+    ADC_Diff_ADC3_ADC2_Gain1 = 0x1B,
+    ADC_Diff_ADC4_ADC2_Gain1 = 0x1C,
+    ADC_Diff_ADC5_ADC2_Gain1 = 0x1D,
+
+} ADC_SelectChannelDifferential_t;
 
 typedef enum
 {

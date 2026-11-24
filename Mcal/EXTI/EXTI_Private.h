@@ -1,5 +1,5 @@
 /*
- * EXTI_Private.h
+  * EXTI_Private.h
  *
  *  Created on: Oct 16, 2026
  *      Author: samsung
@@ -38,7 +38,7 @@ typedef enum
 /*Options*/
 typedef enum
 {
-    Exti_LowLevel,
+    Exti_LowLevel, //
     Exti_AnyLogic,
     Exti_Falling,
     Exti_Rising,
@@ -55,23 +55,24 @@ typedef enum
 // 0000 0100
 // 7654 3210
 // 0100 0000
-// typedef enum
-// {
-//     Exti0_LowLevel =0x00,
-//     Exti0_AnyLogic =0x01,
-//     Exti0_Falling  =0x02,
-//     Exti0_Rising   =0x03,
+
+typedef enum
+{
+	 Exti0_LowLevel =0x00,
+     Exti0_AnyLogic =0x01,
+     Exti0_Falling  =0x02,
+     Exti0_Rising   =0x03,
 
 
-//     Exti1_LowLevel = 0x00,
-//     Exti1_AnyLogic = 0x04,
-//     Exti1_Falling  = 0x08,
-//     Exti1_Rising   = 0x0C,
+     Exti1_LowLevel = 0x00,
+     Exti1_AnyLogic = 0x04,
+     Exti1_Falling  = 0x08,
+     Exti1_Rising   = 0x0C,
 
-//     Exti2_Falling  = 0x00,
-//     Exti2_Rising   = 0x40,
+     Exti2_Falling  = 0x00,
+     Exti2_Rising   = 0x40,
 
-// }Exti_EventType_t;
+ }Exti_EventType_t;
 
 
 typedef  enum
